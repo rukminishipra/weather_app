@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'views/home_screen.dart';
 import 'services/api_service.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // Providers
 final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
@@ -21,6 +22,9 @@ final weatherRepositoryProvider = Provider<WeatherRepository>((ref) {
 void main() async {
   // Ensure Flutter bindings are initialized
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Load environment variables
+  await dotenv.load(fileName: ".env");
 
   // Initialize SharedPreferences
   final prefs = await SharedPreferences.getInstance();
