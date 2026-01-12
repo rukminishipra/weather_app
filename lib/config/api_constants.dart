@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ApiConstants {
@@ -5,7 +6,7 @@ class ApiConstants {
     try {
       return dotenv.env['ACCUWEATHER_API_KEY'] ?? 'YOUR_DEFAULT_API_KEY';
     } catch (e) {
-      print('Error loading API key: $e');
+      debugPrint('Error loading API key: $e');
       return 'YOUR_DEFAULT_API_KEY';
     }
   }

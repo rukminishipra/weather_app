@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import '../config/api_constants.dart';
 import '../models/location_model.dart';
 
@@ -63,12 +64,12 @@ class ApiService {
           .map((json) => LocationModel.fromJson(json))
           .toList();
     } on DioException catch (e) {
-      print('DioException caught:');
-      print('  Type: ${e.type}');
-      print('  Message: ${e.message}');
-      print('  Response status: ${e.response?.statusCode}');
-      print('  Response data: ${e.response?.data}');
-      print('  Request: ${e.requestOptions.uri}');
+      debugPrint('DioException caught:');
+      debugPrint('  Type: ${e.type}');
+      debugPrint('  Message: ${e.message}');
+      debugPrint('  Response status: ${e.response?.statusCode}');
+      debugPrint('  Response data: ${e.response?.data}');
+      debugPrint('  Request: ${e.requestOptions.uri}');
 
       if (e.type == DioExceptionType.connectionError) {
         throw Exception(
@@ -76,8 +77,8 @@ class ApiService {
       }
       rethrow;
     } catch (e, stackTrace) {
-      print('Unexpected error: $e');
-      print('Stack trace: $stackTrace');
+      debugPrint('Unexpected error: $e');
+      debugPrint('Stack trace: $stackTrace');
       rethrow;
     }
   }
@@ -102,16 +103,16 @@ class ApiService {
 
       return response.data as List<dynamic>;
     } on DioException catch (e) {
-      print('Weather DioException caught:');
-      print('  Type: ${e.type}');
-      print('  Message: ${e.message}');
-      print('  Response status: ${e.response?.statusCode}');
-      print('  Response data: ${e.response?.data}');
-      print('  Request: ${e.requestOptions.uri}');
+      debugPrint('Weather DioException caught:');
+      debugPrint('  Type: ${e.type}');
+      debugPrint('  Message: ${e.message}');
+      debugPrint('  Response status: ${e.response?.statusCode}');
+      debugPrint('  Response data: ${e.response?.data}');
+      debugPrint('  Request: ${e.requestOptions.uri}');
       rethrow;
     } catch (e, stackTrace) {
-      print('Unexpected weather error: $e');
-      print('Stack trace: $stackTrace');
+      debugPrint('Unexpected weather error: $e');
+      debugPrint('Stack trace: $stackTrace');
       rethrow;
     }
   }
@@ -138,7 +139,7 @@ class ApiService {
 
       return response.data as Map<String, dynamic>;
     } catch (e) {
-      print('Error getting location by geoposition: $e');
+      debugPrint('Error getting location by geoposition: $e');
       rethrow;
     }
   }
