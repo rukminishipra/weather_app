@@ -1,10 +1,10 @@
-# firstly
+# Weather App
 
-A new Flutter project.
+Flutter weather app with a GitHub Actions CI pipeline.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+CI runs `flutter analyze` and `flutter test` on every PR and push to `main`.
 
 A few resources to get you started if this is your first Flutter project:
 
