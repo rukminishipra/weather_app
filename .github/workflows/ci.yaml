@@ -41,6 +41,10 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Create env file
+        run: |
+          if [ -f .env.example ]; then cp .env.example .env; fi
+
       - name: Analyze
         run: flutter analyze
 
